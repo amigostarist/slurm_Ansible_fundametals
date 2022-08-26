@@ -3,4 +3,29 @@
 
 2) Обратите внимание на вывод Vagrant при создании этой машины. Какие отличия от Ubuntu вы видите?
 
-3) После создания остановите и удалите виртуальную машину.
+3) После создания остановите и удалите виртуальную машину
+
+Редирект
+Используя атрибут location сделайте редирект на google.com со страницы /wantgoogle/. localhost:8080/wantgoogle/
+Что изменится в файле конфигурации, относительно базового файла?
+
+ 
+
+Подсказка: proxy_pass работает, в том числе и на веб сайты.
+
+Важно: Не забывайте про команды nginx -s reload и nginx -t. Первая перезагрузит конфигурации в nginx, вторая скажет вам верные ли они.
+
+
+Вывод данных из БД
+Задание повышенной сложности.
+
+Используя команды CREATE DATABASE, CREATE TABLE создайте базу данных business_db и таблицу important_data в MySQL со следующей структурой.
+
+CREATE TABLE important_data (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) );
+Используя PHP соединитесь с базой данных, с помощью запроса.
+
+SELECT * FROM important_data;
+и скрипта test-connection.php выведите данные. php-test.com:8080/test-connection.php
+Как изменится скрипт test-connection.php? .
