@@ -16,7 +16,9 @@ On BIOS your machine must be include support virtualization(AMD-V or VT-X).
  
 	1.2 Install vagrant #sudo apt install vagrant -y
 Step: create project: 
+
 	2.1 Create folder for project # mkdir "project"
+
 	2.2 Enter this folder # cd ~/"project"
 	2.3 Iniciate # vagrant init
 	2.4 Verified status # vagrant status. You can see, what vagrant create new files. And VM not created
