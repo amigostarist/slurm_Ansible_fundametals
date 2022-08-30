@@ -107,6 +107,7 @@ All done!
 
 test-connection.phptest-connection.php	5.5. Enter to DB # mysql -u root -p
 		enter password
+
 	5.6. now we see who & how can enter to DB # mysql 
 		SELECT user, plugin FROM mysql.user;
 
@@ -121,6 +122,7 @@ Step: Create configuration for testing php:
 	7.2. create config file # vim php_test.conf OR copyes sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/php_test.conf
 sudo vim  /etc/nginx/sites-available/php_test.conf
 	7.3. Write needed properties in php_test:
+
 server {
         listen 80;
         root /var/www/php_test;
@@ -136,15 +138,14 @@ server {
                 fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; # обрабатываем с помощью fpm, передавая данные в файловый сокет и получая их обратно
         }
 }
-
 	7.4. Create symbol link # sudo ln -s /etc/nginx/sites-available/php_test.conf /etc/nginx/sites-enabled/php_test
 	7.5. Check configuration nginx # sudo nginx -t
 	7.6. Reload server # sudo nginx -s reload 
 	7.7. Create folder # sudo mkdir /var/www/php-test
 	7.8. Change owner for folder # sudo chown vagrant:vagrant /var/www/php-test
 	7.9. Create test php file # echo "<?php phpinfo(); ?>" > /var/www/php-test/index.php
-open your browser and enter in address string "php-test.com:8080"
-	7.10. Edit host file in your computer # echo "127.0.0.1 php-test.com" >> /etc/hosts
-	7.11. Check work php with mysql # sudo cp ./test-connection.php /var/www/php-test
-open your browser and enter in address string "php-test.com:8080/connection.php"
+	7.10. Open your browser and enter in address string "php-test.com:8080"
+	7.11. Edit host file in your computer # echo "127.0.0.1 php-test.com" >> /etc/hosts
+	7.12. Check work php with mysql # sudo cp ./test-connection.php /var/www/php-test
+	7.13. Open your browser and enter in address string "php-test.com:8080/connection.php"
  
