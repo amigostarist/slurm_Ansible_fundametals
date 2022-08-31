@@ -65,4 +65,31 @@ SELECT * FROM important_data;
 
 1 Редактируем Vagrantfile, прописывая в нем необходимые параметрами.
 2 Запускаем ВМ # vagrant up.
-3 Инсталируем LEMP # sudo yum install -y 
+3 Инсталируем E (nginx):
+    3.1 Обновляем список репозиториев # sudo yum update
+    3.2 Устанавливаем репозиторий, для того чтобы иметь все возможности последних версий # sudo yum install epel-release
+    3.3 Устанавливаем NGINX # sudo yum install -y nginx
+    3.4 Запускаем # sudo systemctl start nginx
+    3.5 Добавляем в автозагрузку # sudo systemctl enable nginx
+    3.6 Копируем одностраничный сайт-заглушку для проверки работоспособности # sudo cp -r ~/admin/ /usr/share/nginx/html/
+    3.7 Создаем директорию для нашего будующего сайта # sudo mkdir /usr/share/nginx/html/php-test
+    3.8 Настраиваем доступ к директории, изменяя владельца и группу # sudo chown vagrant:vagrant  /usr/share/nginx/html/php-test
+    3.9 Создаем тестовый файл проверки работы php # sudo echo "<?php phpinfo(); ?>" > php-test.php  /usr/share/nginx/html/php-test/
+4 Инсталируем M (MySQL):
+5 Инсталируем P (php):
+5.1 Инсталируем # sudo yum install php-fpm
+5.2 Запускаем # sudo systemctl start php-fpm
+5.3 Откройте конфигурационный файл php-fpm, который находится по адресу /etc/php-fpm.d/www.conf и посмотрите, на каком порту ожидает соединений запущенная служба. По умолчанию это 9000:
+
+location ~ \.php$ {
+try_files $uri =404;
+fastcgi_pass 127.0.0.1:9000;
+fastcgi_index index.php;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+fastcgi_buffer_size 128k;
+fastcgi_buffers 256 16k;
+fastcgi_busy_buffers_size 256k;
+fastcgi_temp_file_write_size 256k;
+include fastcgi_params;
+}
