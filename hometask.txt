@@ -76,6 +76,8 @@ SELECT * FROM important_data;
     3.8 Настраиваем доступ к директории, изменяя владельца и группу # sudo chown vagrant:vagrant  /usr/share/nginx/html/php-test
     3.9 Создаем тестовый файл проверки работы php # sudo echo "<?php phpinfo(); ?>" > php-test.php  /usr/share/nginx/html/php-test/
 4 Инсталируем M (MySQL):
+    sudo yum install mariadb-server mariadb -y
+    sudo systemctl start mariadb
 5 Инсталируем P (php):
 5.1 Инсталируем # sudo yum install php-fpm
 5.2 Запускаем # sudo systemctl start php-fpm
